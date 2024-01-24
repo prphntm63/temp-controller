@@ -1,9 +1,14 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 80
+
+app.set('view engine', 'pug')
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.render('home', {
+    metadata: "Welcome to the page!"
+  })
 })
 
 app.listen(port, () => {
