@@ -1,5 +1,7 @@
 $( document ).ready(function() {
-  setTimeout(() => {
-    $('#dynamic_content').text('I changed!')
-  }, 3000)
+  const socket = io()
+
+  socket.on('datetime', (msg) => {
+    $('#dynamic_content').text(msg)
+  })
 });
