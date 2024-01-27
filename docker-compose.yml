@@ -1,0 +1,54 @@
+version: '3'
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg14
+    container_name: timescaledb 
+    environment:
+      TIMESCALEDB_TELEMETRY: "off"
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "6543:5432"
+    networks:
+      - app_network
+
+  web:
+    privileged: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: express
+    depends_on:
+      - postgres
+    volumes:
+      - .:/usr/src
+    ports:
+      - "3000:3000"
+    networks:
+      app_network:
+        aliases:
+          - web
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx_server
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    networks:
+      app_network:
+        aliases:
+          - nginx
+
+volumes:
+  postgres_data:
+
+networks:
+  app_network:
+    driver: bridge
