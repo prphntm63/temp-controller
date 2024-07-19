@@ -1,0 +1,75 @@
+extends default
+
+block content
+  .container
+    .mt-3.update-header.d-flex.flex-row.justify-content-between
+      h1 Setup
+      button.btn.btn-outline-secondary(onclick="(function(){window.location.href='/'})()") ✖
+  .mt-5.d-flex.flex-row.justify-content-evenly
+    .ferm-update#ferm1
+      h2 Ferm 1
+      .mt-3
+        label.form-label(for="name") Name 
+        input.form-control.name(type="string")
+      .mt-3
+        label.form-label(for="url") URL 
+        input.form-control.url(type="string")
+      .mt-3
+        label.form-label(for="set_temp") Set Temperature 
+        input.form-control.set_temp(type="number")
+      .mt-3
+        label.form-label(for="threshold") Set Threshold 
+        input.form-control.threshold(type="number")
+      .mt-3
+        label.form-label(for="og") Original Gravity
+        input.form-control.og(type="number")
+      .mt-3
+        label.form-label(for="fg") Target Final Gravity
+        input.form-control.fg(type="number")
+      .mt-3 
+        button.w-100.btn.btn-info.update Update
+      .mt-5 
+        .d-flex.justify-content-between
+          div Tare Value
+          .tare -
+      .mt-1
+        .d-flex.justify-content-between
+          div Full Value
+          .full -
+      .mt-3.d-flex.justify-content-between
+        button.btn.btn-secondary.setTare Set Tare 
+        button.ms-3.btn.btn-secondary.setFull Set Full
+
+    .ferm-update#ferm2
+      h2 Ferm 2 
+      .mt-3
+        label.form-label(for="name") Name 
+        input.form-control.name(type="string")
+      .mt-3
+        label.form-label(for="url") URL 
+        input.form-control.url(type="string")
+      .mt-3
+        label.form-label(for="set_temp") Set Temperature 
+        input.form-control.set_temp(type="number")
+      .mt-3
+        label.form-label(for="threshold") Set Threshold 
+        input.form-control.threshold(type="number")
+      .mt-3
+        label.form-label(for="og") Original Gravity
+        input.form-control.og(type="number")
+      .mt-3
+        label.form-label(for="fg") Target Final Gravity
+        input.form-control.fg(type="number")
+      .mt-3 
+        button.w-100.btn.btn-info.update Update
+      .mt-5 
+        .d-flex.justify-content-between
+          div Tare Value
+          .tare -
+      .mt-1
+        .d-flex.justify-content-between
+          div Full Value
+          .full -
+      .mt-3.d-flex.justify-content-between
+        button.btn.btn-secondary.setTare Set Tare 
+        button.ms-3.btn.btn-secondary.setFull Set Full

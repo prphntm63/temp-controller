@@ -1,12 +1,16 @@
 extends default
 
 block content
-  .main
-    h1 Hello World!
-    h3 #{metadata}
-    #ferm1
-      h3.temp 
-      h4.set
-    #ferm2 
-      h3.temp 
-      h4.set
+  .main.d-flex.flex-row.justify-content-between
+    .metadata-container 
+      div #{metadata}
+
+    .ferm-container.ferm-container-left
+      #ferm1.ferm-text.ferm-text.ferm-text-left
+        h3.temp 
+        h4.set
+
+    .ferm-container.ferm-container-right
+      #ferm2.ferm-text.ferm-text.right
+        h3.temp 
+        h4.set

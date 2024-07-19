@@ -14,10 +14,10 @@ module.exports = {
         type: Sequelize.DATE
       },
       device_id: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       set_temp: {
         type: Sequelize.FLOAT

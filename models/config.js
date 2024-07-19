@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class config extends Model {
@@ -14,7 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   config.init({
-    device_id: DataTypes.STRING,
+    device_id: {
+      type: DataTypes.STRING,
+      primaryKey: true
+    },
+    status: DataTypes.STRING,
+    set_temp: DataTypes.NUMBER,
+    threshold: DataTypes.NUMBER,
     og: DataTypes.NUMBER,
     fg: DataTypes.NUMBER,
     name: DataTypes.STRING,

@@ -8,7 +8,8 @@
     "cron": "node cronJob.js",
     "server": "node index.js",
     "migrate": "npx sequelize db:migrate",
-    "start": "npm run migrate; npm run cron & npm run server"
+    "start": "npm run migrate; npm run cron & npm run server",
+    "dev": "npm run migrate; npm run cron & nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,10 @@
     "rpio": "^2.4.2",
     "sequelize": "^6.35.2",
     "sequelize-cli": "^6.6.2",
-    "socket.io": "^4.7.4"
+    "socket.io": "^4.7.4",
+    "w1temp": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
