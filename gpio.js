@@ -16,12 +16,27 @@ const WEIGHT_DATA_2 = 42
 
 const TEMP_DATA = 6
 
-const gpioInit = () => {
+const gpioInit = async () => {
   let options = {}
   if (process.env.RASPBERRY_PI === 'false') {
     options.mock = 'raspi-3'
   } else {
-    w1temp.setGpioData(TEMP_DATA)
+    await new Promise((resolve, reject) => {
+      ds18x20.isDriverLoaded((err, isLoaded) => {
+        if (err) {
+          reject(err)
+        }
+
+        if (!isLoaded) {
+          ds18x20.loadDriver((err) => {
+            if (err) {
+              reject(err)
+            }
+            resolve(true)
+          })
+        }
+      })
+    })
   }
 
   rpio.init(options);
