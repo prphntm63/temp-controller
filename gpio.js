@@ -1,5 +1,5 @@
 const rpio = require('rpio')
-const w1temp = require('w1temp')
+const ds18x20 = require('ds18x20')
 const fs = require('fs/promises')
 const { uptime } = require('node:process')
 require('dotenv').config()
@@ -116,16 +116,28 @@ const getTempData = async (device, currentData, currentConfig) => {
     })
 
   if (device && sensorIdData[device]) {
-    return await w1temp.getSensor(sensorIdData[device])
-      .then(async (sensor) => {return await sensor.getTemperatureAsync()})
+    return await new Promise((resolve, reject) => {
+      ds18x20.get(sensorIdData[device], (err, temp) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(temp)
+      })
+    })
   } else if (device && sensorIdData[device]) {
     throw new Error('Requested device does not exist in temp_sensor_ids.json')
   }
 
   const result = {}
   for await (const [device, sensorId] of Object.entries(sensorIdData)) {
-    result[device] = await w1temp.getSensor(sensorId)
-      .then(async (sensor) => {return await sensor.getTemperatureAsync()})
+    result[device] = await new Promise((resolve, reject) => {
+      ds18x20.get(sensorIdData[device], (err, temp) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(temp)
+      })
+    })
   }
   return result
 }

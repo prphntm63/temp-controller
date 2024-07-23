@@ -23,7 +23,7 @@ const server = createServer(app);
 const io = new Server(server);
 gpioInit()
 
-const port = 3000
+const port = process.env.PORT
 
 let loop
 let currentData

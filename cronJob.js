@@ -1,13 +1,16 @@
 const { CronJob } = require('cron');
 const fs = require('node:fs/promises');
 const http = require('http')
+require('dotenv').config()
+
+const port = process.env.PORT || 3000
 
 const loop = async () => {
-  http.get('http://localhost:3000/update')
+  http.get(`http://localhost:${port}/update`)
 }
 
 const historicalLoop = async () => {
-  http.get('http://localhost:3000/update?historical=true')
+  http.get(`http://localhost:${port}/update?historical=true`)
 }
 
 const currentJob = new CronJob(
