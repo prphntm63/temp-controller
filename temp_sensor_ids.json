@@ -1,6 +1,7 @@
 {
-  "ferm1": "28-00000636a3e3",
-  "ferm2": "28-00000636a3e3",
-  "chiller": "28-00000636a3e3",
-  "ambient": "28-00000636a3e3"
+  "ferm1": "28-3ce1e38020f1",
+  "ferm2": "28-3ce1e3807ac0",
+  "chiller": "28-3ce1e38082e5",
+  "ambient": "28-3ce1e380ac28a",
+  "spare": "28-3ce1e380e6c1"
 }
